@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${futuraHeavy.className} ${alexBrush.variable} bg-[#E9EFF3]`}
+        className={`${futuraHeavy.className} ${alexBrush.variable} bg-[#C2D3DB]`}
       >
         <ClientLayout>{children}</ClientLayout>
       </body>
