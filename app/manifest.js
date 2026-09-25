@@ -1,0 +1,1 @@
+export default function manifest(){return {name:"Mona Meenakshi Real Estate",short_name:"Mona Real Estate",description:"Central Valley real estate guidance from Mona Meenakshi.",start_url:"/",display:"standalone",background_color:"#f5f1e8",theme_color:"#101820",icons:[{src:"/agent-profile.png",sizes:"512x512",type:"image/png"}]}}

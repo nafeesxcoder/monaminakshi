@@ -1,20 +1,3 @@
-import React from 'react'
-import ContactSection from '@/components/shared/ContactSection'
-import ContactMap from '@/components/shared/ContactMap'
-import PageHeader from '@/components/shared/pageHeader'
-
-function page() {
-  return (
-    <div>
-      <PageHeader
-        title="Reliable. Responsive. Ready 24/7."
-        subtitle="Contact Us"
-        backgroundImage="/contacthero.png"
-      />
-      <ContactSection />
-      <ContactMap />
-    </div>
-  )
-}
-
-export default page
+import { agent } from "@/lib/data";import { Phone,Mail,MapPin,ExternalLink,MessageCircle } from "lucide-react";
+export const metadata={title:"Contact"};
+export default function Contact(){const whatsapp=`https://wa.me/${agent.phoneHref.replace("+","")}?text=${encodeURIComponent("Hi Mona, I am contacting you through your website regarding real estate.")}`;return <section className="contact-page"><div className="contact-intro"><p className="eyebrow">START A CONVERSATION</p><h1>What&apos;s your<br/><em>next move?</em></h1><p>Tell Mona what you&apos;re planning. She&apos;ll help you understand the market and choose a practical next step.</p><div className="contact-list"><a href={`tel:${agent.phoneHref}`}><Phone/><span><small>CALL OR TEXT</small><b>{agent.phone}</b></span></a><a href={`mailto:${agent.email}`}><Mail/><span><small>EMAIL</small><b>{agent.email}</b></span></a><a href={whatsapp} target="_blank" rel="noreferrer" className="contact-whatsapp"><MessageCircle/><span><small>WHATSAPP</small><b>Chat directly with Mona</b></span></a><div><MapPin/><span><small>OFFICE</small><b>{agent.office}</b></span></div></div></div><form className="contact-form" action={`mailto:${agent.email}`} method="post" encType="text/plain"><div><label htmlFor="name">Name</label><input id="name" name="name" required/></div><div><label htmlFor="email">Email</label><input id="email" type="email" name="email" required/></div><div><label htmlFor="phone">Phone</label><input id="phone" type="tel" name="phone"/></div><div><label htmlFor="goal">I&apos;m interested in</label><select id="goal" name="goal"><option>Buying a property</option><option>Selling a property</option><option>Investment opportunities</option><option>Other</option></select></div><div className="full"><label htmlFor="message">How can Mona help?</label><textarea id="message" name="message" rows="5" required/></div><div className="contact-form-actions"><button className="button gold" type="submit">Send message <ExternalLink size={17}/></button><a className="button whatsapp-direct" href={whatsapp} target="_blank" rel="noreferrer"><MessageCircle size={18}/> WhatsApp Mona</a></div><p>Submitting opens your email app. For the fastest response, message Mona directly on WhatsApp.</p></form></section>}

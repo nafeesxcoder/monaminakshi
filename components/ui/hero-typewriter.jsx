@@ -13,7 +13,7 @@ export const HeroTypewriter = () => {
     }, 2000); // Change word every 2 seconds
 
     return () => clearInterval(interval);
-  }, []);
+  }, [words.length]);
 
   return (
     <div className="inline-flex items-center">
@@ -33,4 +33,4 @@ export const HeroTypewriter = () => {
       {/* <span className="text-white/90"> with Confidence</span> */}
     </div>
   );
-}; 
+};

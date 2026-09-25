@@ -1,56 +1,9 @@
-"use client"
-import React from 'react'
-import { motion } from "framer-motion"
-import SupportBanner from '@/components/shared/SupportBanner'
-import TestimonialsGrid from '@/components/shared/TestimonialsGrid'
-import PageHeader from '@/components/shared/pageHeader'
-import { testimonialsCallToActionVariants, testimonialsCallToActionContentVariants, testimonialsCallToActionTitleVariants, testimonialsCallToActionTextVariants } from '@/lib/animation'
-
-function page() {
-  return (
-    <div>
-      <PageHeader
-        title="What Our Clients Are Saying"
-        subtitle="Testimonials"
-        backgroundImage="/clienthero.png"
-      />
-      <div className='px-4 sm:px-8 xl:px-0'>
-        {/* Call to Action Section */}
-        <motion.section 
-          className="py-6 md:py-8"
-          variants={testimonialsCallToActionVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          <div className="max-w-2xl mx-auto text-center">
-            <motion.div 
-              className=""
-              variants={testimonialsCallToActionContentVariants}
-            >
-              {/* Main Heading */}
-              <motion.h2 
-                className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight mb-4"
-                variants={testimonialsCallToActionTitleVariants}
-              >
-                Your Success, Our Pride
-              </motion.h2>
-
-              {/* Sub-text */}
-              <motion.p 
-                className="text-white/90 md:text-lg"
-                variants={testimonialsCallToActionTextVariants}
-              >
-                Real stories from happy homeowners, investors, and families who trusted Monameenakshi for their real estate journey in Fresno and beyond.
-              </motion.p>
-            </motion.div>
-          </div>
-        </motion.section>
-        <TestimonialsGrid />
-      </div>
-      <SupportBanner />
-    </div>
-  )
-}
-
-export default page
+import Link from "next/link";
+import { ArrowRight, BadgeCheck, ExternalLink, MessageSquarePlus, Star, MapPin, Quote, ShieldCheck } from "lucide-react";
+import { agent } from "@/lib/data";
+export const metadata={title:"Verified Client Reviews"};
+const ratings=["Responsiveness","Market expertise","Negotiation skills","Professionalism & communication"];
+export default function Testimonials(){return <><section className="reviews-hero premium-review-hero"><div><p className="eyebrow">CLIENT EXPERIENCE</p><h1>Proof lives in<br/><em>the experience.</em></h1><p>Local knowledge matters. Clear communication matters more. Explore the public feedback behind Mona&apos;s client-first approach.</p><div className="hero-review-actions"><a href={agent.googleBusiness} target="_blank" rel="noreferrer" className="button gold">Explore all Google reviews <ExternalLink/></a><Link href="/contactus" className="button review-ghost">Start a conversation <ArrowRight/></Link></div></div><div className="google-rating-orbit"><small>GOOGLE RATING</small><span>5.0</span><div>{[1,2,3,4,5].map(x=><Star key={x} fill="currentColor"/>)}</div><b>43 PUBLIC REVIEWS</b><i>Verified September 24, 2026</i></div></section>
+  <section className="google-proof"><div className="google-proof-intro"><div><p className="eyebrow dark">PUBLIC REPUTATION</p><h2>Every review.<br/><em>One trusted source.</em></h2></div><p>Rather than copying incomplete or outdated review text, this page links directly to Mona&apos;s live Google Business profile—where all 43 reviews, dates, photos and owner responses remain current and verifiable.</p></div><div className="google-proof-card"><div className="google-g"><span>G</span></div><div><small>GOOGLE BUSINESS PROFILE</small><h3>Realty One Group Action :<br/>Mona Meenakshi, Realtor</h3><p><MapPin/> 7498 N Remington Ave #101, Fresno, CA 93711</p><div className="google-card-rating"><b>5.0</b><span>{[1,2,3,4,5].map(x=><Star key={x} fill="currentColor"/>)}</span><em>43 reviews</em></div></div><a href={agent.googleBusiness} target="_blank" rel="noreferrer" aria-label="Open all Google reviews"><ArrowRight/></a></div><div className="review-promise-grid"><article><ShieldCheck/><span>01</span><h3>Source verified</h3><p>The profile matches Mona&apos;s published phone, office address and business identity.</p></article><article><Quote/><span>02</span><h3>Always current</h3><p>Read every public review in Google&apos;s original order without stale website copies.</p></article><article><MessageSquarePlus/><span>03</span><h3>Your voice matters</h3><p>Open the official profile to share your own experience directly on Google.</p></article></div></section>
+  <section className="verified-review-section premium-featured-review"><div className="featured-review-heading"><p className="eyebrow dark">FEATURED VERIFIED STORY</p><h2>Detailed feedback,<br/><em>independently sourced.</em></h2></div><div className="verified-review-card"><header><span><BadgeCheck/> VERIFIED ON REALTOR.COM</span><a href={agent.realtorProfile} target="_blank" rel="noreferrer">View original source <ExternalLink/></a></header><div className="review-card-body"><aside><b>5.0</b><div>{[1,2,3,4,5].map(x=><Star key={x} fill="currentColor"/>)}</div><small>Satpal Singh<br/>Madera, California<br/>September 6, 2024</small></aside><blockquote><span>“</span><h2>A steady hand through every detail.</h2><p>The verified buyer described Mona as responsive and supportive through escrow and paperwork, and appreciated her guidance in finding a Riverstone-area home.</p><footer>Review summarized from the public source for accuracy and readability.</footer></blockquote></div><div className="rating-grid">{ratings.map(label=><div key={label}><span>{label}</span><b>5.0</b></div>)}</div></div></section>
+  <section className="leave-review premium-leave-review"><div><p className="eyebrow">SHARE YOUR EXPERIENCE</p><h2>Your story<br/>belongs here.</h2><p>Worked with Mona? Add your review to the official Google profile so future Central Valley buyers and sellers can hear directly from you.</p></div><div className="leave-review-actions"><a href={agent.googleBusiness} target="_blank" rel="noreferrer" className="button gold"><MessageSquarePlus/> Review Mona on Google</a><a href={agent.realtorProfile} target="_blank" rel="noreferrer" className="button review-ghost">Visit Realtor.com <ExternalLink/></a><Link href="/contactus" className="text-link">Contact Mona <ArrowRight/></Link></div></section></>}

@@ -35,7 +35,7 @@ export const TypewriterEffect = ({
         }
       );
     }
-  }, [isInView]);
+  }, [isInView, animate]);
 
   const renderWords = () => {
     return (
@@ -170,4 +170,4 @@ export const TypewriterEffectSmooth = ({
       ></motion.span>
     </div>
   );
-}; 
+};

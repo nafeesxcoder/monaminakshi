@@ -1,21 +1,9 @@
 import "./globals.css";
+import "./reference.css";
 import ClientLayout from "./components/ClientLayout";
-import { futuraHeavy, alexBrush } from "./fonts/font";
-
-export const metadata = {
-  title: "Monameenakshi Real Estate | Fresno Realtor",
-  description:
-    "Monameenakshi Real Estate - Your trusted local Fresno Realtor for buying, selling, and investing in property.",
-};
-
-export default function RootLayout({ children }) {
-  return (
-    <html lang="en">
-      <body
-        className={`${futuraHeavy.className} ${alexBrush.variable} bg-[#C2D3DB]`}
-      >
-        <ClientLayout>{children}</ClientLayout>
-      </body>
-    </html>
-  );
-}
+import { futuraHeavy } from "./fonts/font";
+import { agent } from "@/lib/data";
+const siteUrl=process.env.NEXT_PUBLIC_SITE_URL || "https://monaminakshi.vercel.app";
+export const metadata = { metadataBase:new URL(siteUrl), title: { default: "Mona Meenakshi | Central Valley REALTOR®", template: "%s | Mona Meenakshi" }, description: "Buy, sell and invest with Mona Meenakshi, a Central Valley REALTOR® serving Fresno, Clovis, Madera and nearby communities.", alternates:{canonical:"/"}, openGraph:{type:"website",locale:"en_US",url:siteUrl,siteName:"Mona Meenakshi Real Estate",title:"Mona Meenakshi | Central Valley REALTOR®",description:"Local guidance for Central Valley buyers, sellers and investors.",images:[{url:"/luxury-central-valley-hero.png",width:1200,height:630,alt:"Mona Meenakshi Central Valley real estate"}]}, twitter:{card:"summary_large_image",title:"Mona Meenakshi | Central Valley REALTOR®",description:"Local guidance for Central Valley buyers, sellers and investors.",images:["/luxury-central-valley-hero.png"]}, robots:{index:true,follow:true}, category:"real estate" };
+const schema={"@context":"https://schema.org","@type":["RealEstateAgent","LocalBusiness"],name:agent.name,url:siteUrl,image:`${siteUrl}/agent-profile.png`,telephone:agent.phone,email:agent.email,priceRange:"$$$",address:{"@type":"PostalAddress",streetAddress:"7498 N Remington Ave, Suite 101",addressLocality:"Fresno",addressRegion:"CA",postalCode:"93711",addressCountry:"US"},areaServed:["Fresno","Clovis","Madera","Kerman","Chowchilla","Oakhurst"],sameAs:[agent.instagram,agent.tiktok,agent.realtorProfile,agent.googleBusiness],memberOf:{"@type":"Organization",name:agent.brokerage,url:agent.brokerageUrl}};
+export default function RootLayout({ children }) { return <html lang="en"><body className={futuraHeavy.variable}><a className="skip-link" href="#main-content">Skip to main content</a><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema)}}/><ClientLayout>{children}</ClientLayout></body></html>; }
